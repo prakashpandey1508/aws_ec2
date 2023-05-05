@@ -1,0 +1,86 @@
+<!-- <h1>New Appointment</h1>
+
+<%= form_with model: @appointment, url: appointments_path do |form| %>
+  <% if @appointment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@appointment.errors.count, "error") %> prohibited this appointment from being saved:</h2>
+      <ul>
+        <% @appointment.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :date %>
+    <%= form.date_field :date %>
+  </div>
+
+  <div>
+    <%= form.label :agent_id, "Agent" %>
+    <%= form.collection_select :agent_id, @agents, :id, :name, prompt:true%>
+  </div>
+
+  <div>
+    <%= form.submit "Create Appointment" %>
+  </div>
+<% end %> -->
+
+<style>
+  body {
+    background-image: url('https://img.freepik.com/premium-photo/close-up-business-woman-real-estate-agent-explain-signing-agreement-buying-house-bank-manager-real-estate-concept_3535-685.jpg?w=1060');
+    background-size: cover;
+    background-position: center;
+  }
+</style>
+
+
+<% if @appointment.errors.any? %>
+  <div class="alert alert-danger">
+    <% @appointment.errors.full_messages.each do |message| %>
+      <p><%= message %></p>
+    <% end %>
+  </div>
+<% end %>
+
+
+
+
+<!-- <%= link_to "Back", appointments_path %>
+<%= form_with(model: [@property, @appointment], url: property_appointments_path(@property)) do |form| %>
+  <%= form.hidden_field :property_id, value: @property.id %>
+  <%= form.hidden_field :agent_id, value: @property.agent.id %>
+  <div>
+    <%= form.label :date %>
+    <%= form.date_field :date %>
+  </div>
+  <%= form.submit 'Book Appointment' %>
+<% end %> -->
+
+<div style="width:650px;padding-left:639px">
+<%= form_with(model: [@property, @appointment], url: property_appointments_path(@property)) do |form| %>
+ <%= form.hidden_field :property_id, value: @property.id %>
+  <%= form.hidden_field :agent_id, value: @property.agent.id %>
+ <div class="card border-success mb-3 bg-light" style="width: 300px;
+    height: 400px;
+    margin-right: 3px;">
+      <div class="card-header bg-transparent border-success">Property Details</div>
+      <div class="card-body text-success">
+        <h5 class="card-title text-dark"><span>&#8962;</span> <%= @property.name%></h5>
+        <p class="card-text text-dark"> <i class="fa fa-rupee"></i> <%= @property.price%></p>
+        <p class="card-text text-dark"> <i class="fa fa-map-marker"> </i> <%= @property.address%></p>
+        <p class="card-text text-dark"><i class="fa fa-edit"></i> <%= @property.descripition%></p>
+      </div>
+       <div class="card-footer bg-transparent border-success">
+       <%= form.label :date %>
+    <%= form.date_field :date %>
+      </div>
+      <div class="card-footer bg-transparent border-success">
+      <div>
+       <span style="margin-left:30px"> <%= form.submit 'Book Appointment' %> </span>
+      </div> 
+      </div>
+    </div>
+    <%end%>
+    </div>

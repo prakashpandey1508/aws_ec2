@@ -1,0 +1,58 @@
+<style>
+  h1 {
+    color: green;
+    text-align: center;
+  }
+</style>
+<h1 >Edit Appointment</h1>
+
+<%= form_with model: @appointment, url: appointment_path(@appointment), method: :put do |form| %>
+  <% if @appointment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@appointment.errors.count, "error") %> prohibited this appointment from being saved:</h2>
+      <ul>
+        <% @appointment.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <!-- <div>
+    <%= form.label :date %>
+    <%= form.date_field :date %>
+    <%= form.label :status %>
+    <%= form.select :status, [['Not Approved', false], ['Approved', true]], {}, class: 'form-control' %>
+    <%= form.submit "Save Appointment", class: "btn-success" %>
+  </div> -->
+
+
+
+
+
+
+
+
+
+<div class="d-flex justify-content-center">
+  <div class="card w-50" style="background-color:burlywood">
+    <div class="card-body">
+      
+        <div class="mb-3">
+          <%= form.label :date, class: "form-label" %>
+          <%= form.date_field :date, class: "form-control" %>
+        </div>
+        <%if agent_signed_in?%>
+        <div class="mb-3">
+          <%= form.label :status, class: "form-label" %>
+          <%= form.select :status, [['Not Approved', false], ['Approved', true]], {}, class: 'form-control' %>
+        </div>
+        <%end%>
+        <%= form.submit "Save Appointment", class: "btn btn-blue" %>
+     
+    </div>
+  </div>
+</div>
+
+<%end%>
+

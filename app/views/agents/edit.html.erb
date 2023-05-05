@@ -1,0 +1,19 @@
+<ol>
+  <% @agent.errors.full_messages.each do |message| %>
+  <li><%= message %></li>
+  <% end %>
+</ol>
+
+
+<%= form_for @agent do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %><br><br>
+
+  <%= f.label :number %>
+  <%= f.number_field :number %><br><br>
+
+  <%= f.label :address %>
+  <%= f.text_field :address%><br><br>
+ 
+  <%= f.submit %>
+<% end %>

@@ -1,0 +1,80 @@
+
+
+<style>
+  body {
+    background-image: url('https://img.freepik.com/premium-photo/close-up-business-woman-real-estate-agent-explain-signing-agreement-buying-house-bank-manager-real-estate-concept_3535-685.jpg?w=1060');
+    background-size: cover;
+    background-position: center;
+  }
+</style>
+
+
+<div class="container">
+  <div class="row justify-content-center", style="margin-top:-232px;padding-right:531px">
+    <div class="col-md-8">
+      <div class="text-center p-2">
+        <h1>Appointments</h1>
+      </div>
+
+      <!--Table-->
+      <table class="table table-striped w-auto">
+
+        <!--Table head-->
+        <thead>
+          <tr>
+           
+            <th class="text-center">User Name</th>
+            <th class="text-center">Agent</th>
+            <th class="text-center">Property</th>
+            <th class="text-center">Date</th>
+            <th class="text-center">Agent Address</th>
+            <%if user_signed_in?%>
+            <th class="text-center">Delete</th>
+            <%end%>
+            <th class="text-center">Edit</th>
+            <th class="text-center">status</th>
+          </tr>
+        </thead>
+        <!--Table head-->
+
+        <!--Table body-->
+        <tbody>
+          <% @appointments.each do |appointment| %>
+          <tr class="table-info">
+            <td class="text-center"><%= appointment.user.name %></td>
+            <td class="text-center"><%= appointment.agent.name %></td>
+            <td class="text-center"><%= appointment.property.name %></td>
+            <td class="text-center"><%= appointment.date %></td>
+            <td class="text-center"><%= appointment.agent.address %></td>
+              <%if user_signed_in?%>
+            <td class="text-center"><%= button_to "Delete", appointment_path(appointment), method: :delete, data: { confirm: "Are you sure?" } %></td>
+            <%end%>
+            <td class="text-center "><%= link_to "Edit", edit_appointment_path(appointment) %></td>
+            <% if appointment.status==true%>
+             <td class="text-center"> Approved</td>
+             <%else%>
+              <td class="text-center">Not Approved</td>
+             <%end%>
+          </tr>
+          <% end %>
+        </tbody>
+        <!--Table body-->
+
+      </table>
+      <!--Table-->
+    </div>
+  </div>
+</div>
+
+<style>
+  table {
+    margin: 0 auto;
+  }
+</style>
+
+
+
+
+
+
+

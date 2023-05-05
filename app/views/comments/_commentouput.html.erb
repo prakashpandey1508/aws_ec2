@@ -1,0 +1,21 @@
+<% @comments.each do |comment|%>
+ <div class="card ">
+          <div class="card-body bg-light mt-1" style="height:100px">
+            <p><%= simple_format comment.content%></p>
+                <p class="small text-muted mb-0">
+  <%= comment.user.name %>
+  <span class="time-ago">
+    <%= time_ago_in_words(comment.created_at) %>
+  </span>
+</p>
+            
+              <div class="d-flex flex-row align-items-center">
+                
+
+                <i class="far fa-thumbs-up ms-2 fa-xs text-black" style="margin-top: -0.16rem;"></i>
+              </div>
+            </div>
+          </div>
+          <%end%>
+        </div>
+        
